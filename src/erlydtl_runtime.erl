@@ -98,7 +98,7 @@ find_value(Key, Tuple) when is_tuple(Tuple) ->
         Module ->
             case lists:member({Key, 1}, Module:module_info(exports)) of
                 true ->
-                    case Tuple:Key() of
+                    case Module:Key(Tuple) of
                         Val when is_tuple(Val) ->
                             case element(1, Val) of
                                 'Elixir.Ecto.Associations.BelongsTo' -> Val:get();
